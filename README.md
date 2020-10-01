@@ -101,3 +101,6 @@ test_status_endpoints/test_status_tweet.py::test_delete_tweet PASSED            
 ================================================== 5 passed in 3.37s ==================================================
 
 ```
+
+### Report -- sample look
+![Report is available in report.html file in this project directory](https://github.com/RSMuthu/Twitter_API-Pytest/blob/master/html_report_img.PNG)
