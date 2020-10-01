@@ -1,0 +1,4 @@
+pytest
+pytest-html
+pytest-ordering
+requests_oauthlib
