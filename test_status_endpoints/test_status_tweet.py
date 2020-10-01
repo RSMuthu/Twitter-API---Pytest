@@ -17,7 +17,7 @@ def test_make_tweet(twitter_session, status_text):
     '''
     # making API call to post the tweet with the status_text provide
     resp = twitter_session.post(f"{BASE_URL}/statuses/update.json", params={'status': status_text})
-    print (f"\nTweet Response - {resp.json()}") ## response shall be captured from std
+    print (f"\nTweet Response - {resp.text}") ## response shall be captured from std
     # Assert to confirm if the tweet is made successfully
     assert resp.status_code == 200
     # Assert to Confirm if the tweet made is having correct data
@@ -39,6 +39,6 @@ def test_delete_tweet(twitter_session):
         if tweet['text'] in status_list:
             # API call to delete the tweet
             resp = twitter_session.post(f"{BASE_URL}/statuses/destroy/{tweet['id']}.json")
-            print (f"\nDelete tweet Response - {resp.json()}") ## response shall be captured from std
+            print (f"\nDelete tweet Response - {resp.text}") ## response shall be captured from std
             # Assert to confirm if the request made successfully
             assert resp.status_code == 200

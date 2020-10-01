@@ -28,5 +28,16 @@ def twitter_session():
     session = OAuth1Session(tokens['api_key'], client_secret=tokens['api_secret_key'],
                             resource_owner_key=tokens['access_token'],
                             resource_owner_secret=tokens['access_token_secret'])
-    ## OAuth1 is used for the Authentication
+    # OAuth1 is used for the Authentication
     return session
+
+@pytest.fixture(scope="session")
+def user_data(twitter_session):
+    '''
+    Verify the credentials provided for the OAuth1 session and fetch the username (screen_name)
+    endpoint used - /account/verify_credentials
+    '''
+    resp = twitter_session.get(f"{BASE_URL}/account/verify_credentials.json")
+    assert resp.status_code == 200
+    # after credentials verifications return the user data as fixture
+    return resp.json()
